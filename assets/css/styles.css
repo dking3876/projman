@@ -1,0 +1,209 @@
+/* Master Styles */
+/* line 2, sass/styles.scss */
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+/* line 7, sass/styles.scss */
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+/* line 15, sass/styles.scss */
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+
+/* line 19, sass/styles.scss */
+a {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* line 23, sass/styles.scss */
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* line 32, sass/styles.scss */
+button:hover {
+  background-color: #cfd8dc;
+}
+
+/* line 35, sass/styles.scss */
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+
+/* Navigation link styles */
+/* line 42, sass/styles.scss */
+nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+/* line 50, sass/styles.scss */
+nav a:visited, a:link {
+  color: #607D8B;
+}
+
+/* line 53, sass/styles.scss */
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+
+/* line 57, sass/styles.scss */
+nav a.router-link-active {
+  color: #039be5;
+}
+
+/* items class */
+/* line 62, sass/styles.scss */
+.items {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 24em;
+}
+
+/* line 68, sass/styles.scss */
+.items li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+/* line 78, sass/styles.scss */
+.items li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+/* line 83, sass/styles.scss */
+.items li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+
+/* line 87, sass/styles.scss */
+.items .text {
+  position: relative;
+  top: -3px;
+}
+
+/* line 91, sass/styles.scss */
+.items {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 24em;
+}
+
+/* line 97, sass/styles.scss */
+.items li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+/* line 107, sass/styles.scss */
+.items li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+/* line 112, sass/styles.scss */
+.items li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+
+/* line 117, sass/styles.scss */
+.items li.selected:hover {
+  background-color: #BBD8DC;
+}
+
+/* line 120, sass/styles.scss */
+.items .text {
+  position: relative;
+  top: -3px;
+}
+
+/* line 124, sass/styles.scss */
+.items .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+/* everywhere else */
+/* line 140, sass/styles.scss */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* line 144, sass/styles.scss */
+.nav-head {
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+/* line 148, sass/styles.scss */
+.main-navigation {
+  list-style: none;
+}
+/* line 151, sass/styles.scss */
+.main-navigation li {
+  float: left;
+  padding: 5px;
+}
+/* line 155, sass/styles.scss */
+.main-navigation li a {
+  background: transparent;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+/* line 161, sass/styles.scss */
+.main-navigation li a:hover {
+  text-decoration: none;
+}
