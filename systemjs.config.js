@@ -23,10 +23,17 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
+      '@angular/material': 'npm:@angular/material/material.umd.js',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'ng2-cookies': 'npm:ng2-cookies',
+      //'ng2-b23-modal': 'node_modules/ng2-bs3-modal'
+      '@brafton/nectar': 'npm:@brafton/nectar',
+
+      //Testing 
+      'derykediter': 'npm:derykediter'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -38,6 +45,18 @@
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-cookies': {
+        main: 'ng2-cookies.js',
+        defaultExtension: 'js'
+      },
+      '@brafton/nectar': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'derykediter': {
         main: './index.js',
         defaultExtension: 'js'
       }

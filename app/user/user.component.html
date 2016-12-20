@@ -1,0 +1,19 @@
+<bf-page-box Title="{{pageTitle}}">
+      <bf-page-box-menu>
+            <!-- 
+                report problem 
+                
+                
+                --> 
+
+      </bf-page-box-menu>
+
+      <bf-page-box-content>
+            <span (click)="transform">{{user.name}}</span><br/>
+            <bf-input text value="{{user.name}}"></bf-input>
+
+            {{ user | json }}
+
+        </bf-page-box-content>
+  </bf-page-box>
+

@@ -1,21 +1,40 @@
-<div class="container-fluid">
-    <div class="nav-head row">
-        <div class="logo col-xs-3">
-            <img src="assets/images/full_logo.png" width="300" />
-        </div>
-        <nav class="col-xs-9">
-            <ul class="main-navigation">
-                <li>
-                    <a routerLink="/main">Home</a>
-                </li>
-                <li>
-                    <a routerLink="/projects">Projects</a>
-                </li>
-                <li>
-                    <a routerLink="/projecttypes">Projects</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <router-outlet></router-outlet>
+<bf-topbar (menuClick)="menuClick()">
+<bf-topbar-notifications>
+<md-icon style="color:white; font-size:25px;">mail</md-icon>&nbsp;&nbsp;
+<md-icon style="color:white; font-size:25px;">alarm</md-icon>&nbsp;&nbsp;
+</bf-topbar-notifications>
+<bf-topbar-identity>
+  <div style="position:relative; top:5px; display:inline-block">
+  <img style="width:30px; border-radius:15px;" src="{{access.get('userIcon')}}" alt="..."/>
 </div>
+  {{access.get('name')}}<md-icon style="color:white; font-size:15px;">keyboard_arrow_down</md-icon>&nbsp;
+  <md-icon style="color:white; font-size:25;">question_answer</md-icon>
+</bf-topbar-identity>
+</bf-topbar>
+
+<bf-sidenav>
+<bf-sidenav-menu>
+
+<bf-menu MenuTitle="Main">
+  <bf-menu-item Caption="Home" Icon="home" (click)="navigate('main')"></bf-menu-item>
+  <bf-menu-item Caption="Projects" Icon="devices" (click)="navigate('projects')"></bf-menu-item>
+  <bf-menu-item Caption="My Profile" Icon="account_circle" (click)="navigate('usersSelf')"></bf-menu-item>
+  <bf-menu-item Caption="Log Out" Icon="security" (click)="logUserOut()"></bf-menu-item>
+</bf-menu>
+
+<bf-menu MenuTitle="Admin" *ngIf="access.permission == 1">
+  <bf-menu-item Caption="Toggle Admin" Icon="low_priority"></bf-menu-item><!-- this should maby be moved to inside any components that need it toggled -->
+  <bf-menu-item Caption="Messages" Icon="email"></bf-menu-item>
+  <bf-menu-item Caption="Application Settings"  Icon="edit"></bf-menu-item>
+  <bf-menu-item Caption="Users"  Icon="portrait"></bf-menu-item>
+</bf-menu>
+
+</bf-sidenav-menu>
+
+<bf-sidenav-content>
+  
+<router-outlet></router-outlet>
+
+</bf-sidenav-content>
+
+</bf-sidenav>

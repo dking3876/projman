@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="">
+            <h3>{{ pData.projectName}}</h3>
+            <div class="col-xs-12">
+                <label>Client Name</label>
+                <span>{{pData.clientName}}</span>
+            </div>
+            <div class="col-xs-12">
+                <label>Project Type</label>
+                <span>{{pData.subject | subjectConvert }}</span>
+            </div>
+            <div class="col-xs-12">
+                <label>Start Date</label>
+                <span *ngIf="pData.startDate.$date">{{ pData.startDate.$date | date:'medium' }}</span>
+            </div>
+            <p> {{ pData.description }} </p>
+            <div>
+                <label>Milestones</label>
+                <ul>
+                    <li *ngFor="let milestone of pData.milestones">{{milestone.name}} : {{milestone.date.$date | date: 'fullDate'}}</li>
+                </ul>
+            </div>
+            {{ pData.assets | json }}
+        </div>
+    </div>
+</div>

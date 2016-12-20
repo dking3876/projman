@@ -1,0 +1,22 @@
+/* line 1, ../sass/projects.scss */
+bf-card {
+  display: inline-block;
+  width: 50%;
+}
+
+/* line 5, ../sass/projects.scss */
+.project-options {
+  display: flex;
+}
+/* line 8, ../sass/projects.scss */
+.project-options span {
+  font-size: 16px;
+  line-height: 24px;
+  height: 24px;
+  display: inline-block;
+  display: flex;
+  height: 37px;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 25px;
+}

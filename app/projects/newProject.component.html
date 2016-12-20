@@ -1,0 +1,48 @@
+<div class="">
+    <h2>New Project</h2>
+    <form>
+        <div class="">
+            <label>Project Name</label>
+            <input type="text" [(ngModel)]="model.projectName"  name="projectName">
+        </div>
+        <div class="">
+            <label>Client Name</label>
+            <input type="text" [(ngModel)]="model.clientName" name="clientName">
+        </div>
+        <div class="">
+            <label>Project Type</label>
+            <input type="text" [(ngModel)]="model.subject" name="subject" id="projectSuggestions">
+            <datalist id="projectSuggestions">
+                <!--<bf-data-option></bf-data-option>-->
+            </datalist>
+        </div>
+        <div class="">
+            <label>Project Description</label>
+            <textarea [(ngModel)]="model.description"  name="description">{{model.description}}</textarea>
+        </div>
+        <div class="">
+            <label>Assets</label>
+            <label>Content Document <input type="checkbox" [(ngModel)]="model.assets.contentDocument"  name="assets" value="contentDocument"></label>
+            <label>Images <input type="checkbox" [(ngModel)]="model.assets.images"  name="assets" value="images"></label>
+            <label>Mockups <input type="checkbox" [(ngModel)]="model.assets.mockups"  name="assets" value="mockup"></label>
+
+        </div>
+        <div class="">
+            <label>Invite existing users</label><br/>
+            <label>User Email or Name</label>
+            <input type="text" #user list="userSuggestions" (change)="findUsers($event)"><md-icon (click)="addUserToProject($event)" style="cursor:pointer;font-size:2em;">add</md-icon>
+            <datalist id="userSuggestions">
+                <bf-data-option *ngFor="let user of userValues" [info]="user"></bf-data-option>
+            </datalist>
+
+
+            <p>Note: to add a new user to the system please open this project first and than visit invite new user menu</p>
+            {{ activeUsers | json }}
+        </div>
+        <div class="">
+            <button (click)="startProject()">Start</button>
+        </div>
+        {{activeUsers }}
+    </form>
+    {{ model | json}}
+</div>

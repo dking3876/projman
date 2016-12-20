@@ -1,0 +1,29 @@
+import { Component, OnInit,  } from '@angular/core';
+import { user } from '../user/user.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+@Component({
+    providers: [user],
+    inputs: ['someuserdata']
+})
+export class security implements OnInit{
+    someuserdata:Object;
+    constructor(private _user:user, private _router:Router, private newUser?:string){
+
+    }
+
+    ngOnInit(){
+        console.log(this._user);
+        if(!this._user.isLoggedIn){
+            
+            console.log("%cYou are not logged in and cannot access this application", "color:red");
+            this._router.navigate(['/mylogin']);
+        }else if (this.newUser === "newUser" || this._user.get('newUser')){
+            //redirect to user page
+            this._router.navigate(['/users', this._user.get("_id")['$oid'] ] );
+        }
+    }
+    canActivate(){
+
+    }
+}

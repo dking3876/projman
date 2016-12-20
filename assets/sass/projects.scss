@@ -1,0 +1,19 @@
+bf-card{
+        display: inline-block;
+        width:50%;
+    }
+.project-options{
+    display:flex;
+
+    span{
+        font-size: 16px;
+        line-height: 24px;
+        height: 24px;
+        display: inline-block;
+        display: flex;
+        height: 37px;
+        align-items: center;
+        cursor: pointer;
+        padding-right:25px;
+    }
+}

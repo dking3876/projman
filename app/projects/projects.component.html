@@ -1,12 +1,97 @@
-<div class="row">
+<bf-page-box Title="{{pageTitle}}">
+      <bf-page-box-menu>
+
+      </bf-page-box-menu>
+
+      <bf-page-box-content>
+
+<div class="row" *ngIf="_access.isLoggedIn">
     <div class="col-xs-12">
-        <h1>This is the projects page</h1>
+       <!-- <div class="col-xs-3">
+            <label>Results Per Page</label>
+            <select [(ngModel)]="getProjects.resultsPerPage" name="resultsPerPage">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option vaulue="15">15</option>
+            </select>
+        </div> -->
+        <fieldset>
+            <legend>Project Options</legend>
+            <div class="col-md-6 col-lg-3">
+                <label>Project Types</label>
+                <select [(ngModel)]="getProjects.projectSubject" name="projectSubject"><!-- populated by getting all projectsubject from mongo the user has open -->
+                    <option value="0">All Projects</option>
+                    <option value="Site.Redesign">Site Redesign</option>
+                    <option>Integration</option>
+                    <option>Graphic</option>
+                </select>
+            </div>
+            <div class=" col-md-6 col-lg-3">
+                <label>Account</label>
+                <select [(ngModel)]="getProjects.accounts" name="accounts"><!-- Should populate from core api for all accounts user can access -->
+                    <option value="all">All Accounts</option>
+                </select>
+            </div>
+            <div class=" col-md-6 col-lg-3">
+                <label>Sort by</label>
+                <select [(ngModel)]="getProjects.sortBy" name="sortBy">
+                    <option>Projects</option>
+                    <option>Account</option>
+                </select>
+                <select [(ngModel)]="getProjects.sortByOrder" name="sortByOrder">
+                    <option value="ASC">Ascending</option>
+                    <option value="DESC">Decending</option>
+                </select>
+            </div>
+            <div class="col-md-12 project-options">
+                <span class="" (click)="showList()">
+                    <md-icon alt="List View" aria-label="List View">view_list</md-icon>List View
+                </span>
+                <span (click)="showCard()">
+                    <md-icon >view_module</md-icon>Card View
+                </span>
+                <span (click)="loadProjects()">
+                    <md-icon >get_app</md-icon>Get Projects
+                </span>
+                <span (click)="newProject()">
+                    <md-icon >note_add</md-icon>New Project
+                </span>
+            </div>
+            
+        </fieldset>
     </div>
-    <div class="col-xs-6">
-        <button (click)="getProjects()">Get Projects</button>
-    </div>
-    <div class="col-xs-6">
-        <span>Display data here</span>
-        <project [pData]="pData"></project>
+    <div class="row" style="clear:both">
+        <div [ngClass]="setClasses()">
+            
+            <loader *ngIf="_loadingProject && !_newProject"></loader>
+            <div class="wrapper" *ngIf="_listView" style="clear:both;">
+                <bf-article-list [articles]="simpleProject" (articleClicked)="goToProject($event)" ></bf-article-list>
+            </div>
+            <div class="wrapper" *ngIf="_cardView && !_newProject" style="clear:both" >
+                <bf-card *ngFor="let project of projects" title="{{project.subject | subjectConvert }}" no-padding>
+                    <bf-card-notifications>{{ project.projectName }}<br/>{{ project.clientName}} </bf-card-notifications>
+                    <bf-card-content>
+                    {{ project.description.substring(0, 150)}}
+                    </bf-card-content>
+                    <bf-card-actions>
+                        <button md-raised-button (click)="previewProject(project)" color="primary" >Preview Project</button>
+                        <button md-raised-button (click)="navigateToProject(project)" >Open Project</button>
+                    </bf-card-actions>
+                </bf-card>
+            </div>
+            
+        </div>
+        <div class="col-xs-6" >
+            <project-preview [pData]="pData" *ngIf="pData && !_newProject"></project-preview>
+        </div>
+        <div class="col-lg-12">
+            <new-project *ngIf="_newProject && !_loadingProjects"></new-project>
+        </div>
     </div>
 </div>
+
+      </bf-page-box-content>
+  </bf-page-box>
+
+
+

@@ -1,5 +1,28 @@
+<bf-page-box Title="{{pageTitle}}">
+
+
+      <bf-page-box-content>
 <div class="row">
     <div class="col-xs-12">
         <h1>This is the Main page</h1>
+        <p>This page will be the landing page after login in</p>
+
+            <ul>
+                <li>total open project</li>
+                <li>projects closed this month</li>
+                <li>projects for the year</li>
+                <li>Clients with open projects</li>
+                <li>Projects with open tickets</li>
+                <li>New products??</li>
+            </ul>
+    </div>
+    <div [hidden]="!_access.isLoggedIn">
+        <h2>This only shows up if the user is logged in</h2>
+    </div>
+    <div [hidden]="_access.isLoggedIn">
+        <h2>this shows up if the user is not logged in</h2>
+        <a routerLink="/mylogin">Login</a>
     </div>
 </div>
+      </bf-page-box-content>
+</bf-page-box>

@@ -1,0 +1,24 @@
+@import '~@angular/material/core/theming/all-theme';
+//the following import is the file that groups alll of our custom components theme files together
+//note that when using this library from a live app subscribing to this package - it should be as follows instead:
+//@import '@brafton/nectar/all-theme';
+@import '~@brafto/nectar/all-theme';
+
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include md-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$brafton-primary: md-palette($md-light-green);
+$brafton-accent:  md-palette($md-amber, A200, A100, A400);
+
+$brafton-theme: md-light-theme($brafton-primary, $brafton-accent);
+
+//this is calling the mixin function in the brafton/nectar/all-theme file, and apply the theme to our components
+@include brafton-components-theme($brafton-theme);
+//this is angular materials one, to apply our theme to all of their components
+@include angular-material-theme($brafton-theme);

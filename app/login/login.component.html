@@ -1,7 +1,9 @@
 <form>
     <div class="">
-        <label>
-            <input type="text">
-        </label>
+        <h2>Please Login to the Project Manager</h2>
+        
+        <label>UserName/Email</label>
+            <input [(ngModel)]="model.username" type="text" name="username"><br/>
+            <button (click)="login()" style="float:right;">Login</button>
     </div>
 </form>
