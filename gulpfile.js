@@ -18,14 +18,18 @@ gulp.task('compile:ts', function () {
         "outDir": "app",
         "target": "ES5"
     }))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('build/app'));
+    /*.pipe(concat('app.js'))*/.pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('build'));
 });
 
 // Generate systemjs-based bundle (app/app.js)
 gulp.task('bundle:app', function() {
-  var builder = new systemjsBuilder('public', './system.config.js');
-  return builder.buildStatic('build', 'build/app.js');
+  var builder = new systemjsBuilder('./', './systemjs.config.js');
+  return builder.bundle('app', 'build/app.js').then(function(){
+      
+  }).catch(function(err){
+      console.log(err);
+  });
 });
 
 // Copy and bundle dependencies into one file (vendor/vendors.js)
@@ -36,8 +40,8 @@ gulp.task('bundle:vendor', function () {
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/systemjs/dist/system-polyfills.js',
         'node_modules/core-js/client/shim.min.js',
-        'node_modules/systemjs/dist/system.js',
-        'system.config.js',
+        'node_modules/systemjs/dist/system.src.js',
+        'systemjs.config.js',
       ])
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('build/vendor'));
@@ -58,8 +62,8 @@ gulp.task('app', ['compile:ts', 'bundle:app']);
 // Bundle dependencies and app into one file (app.bundle.js)
 gulp.task('bundle', ['vendor', 'app'], function () {
     return gulp.src([
-        'app/app.js',
-        'vendor/vendors.js'
+        'build/app.js',
+        'build/vendor/vendors.js'
         ])
     .pipe(concat('app.bundle.js'))
     .pipe(uglify())
