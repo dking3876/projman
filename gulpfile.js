@@ -16,7 +16,8 @@ gulp.task('compile:ts', function () {
         "module": "system",
         "moduleResolution": "node",
         "outDir": "app",
-        "target": "ES5"
+        "target": "ES5",
+        "outFile": "bundle.js"
     }))
     /*.pipe(concat('app.js'))*/.pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build'));
@@ -25,7 +26,7 @@ gulp.task('compile:ts', function () {
 // Generate systemjs-based bundle (app/app.js)
 gulp.task('bundle:app', function() {
   var builder = new systemjsBuilder('./', './systemjs.config.js');
-  return builder.bundle('app', 'build/app.js').then(function(){
+  return builder.bundle('app/main', 'build/app.js').then(function(){
       
   }).catch(function(err){
       console.log(err);
@@ -66,7 +67,7 @@ gulp.task('bundle', ['vendor', 'app'], function () {
         'build/vendor/vendors.js'
         ])
     .pipe(concat('app.bundle.js'))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('./build/app'));
 });
 
